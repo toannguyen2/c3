@@ -23,6 +23,16 @@ services:
       - ALLOW_PLAINTEXT_LISTENER=yes
     depends_on:
       - zookeeper
+
+  aerospike:
+    image: 'aerospike'
+    container_name: aerospike
+    ports:
+      - 3000:3000
+      - 3001:3001
+      - 3002:3002
+    volumes:
+      - 'aerospike_data:/opt/aerospike/data'
       
 volumes:
   kafka_data:
