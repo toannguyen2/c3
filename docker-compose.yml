@@ -23,36 +23,8 @@ services:
       - ALLOW_PLAINTEXT_LISTENER=yes
     depends_on:
       - zookeeper
-
-  hbase:
-    build: 
-      context: ./hbase
-    container_name: hbase
-    hostname: ${HOSTNAME}
-    ports:
-      - 16000:16000 # master
-      - 16010:16010 # master-ui
-      - 16020:16020 # rs
-      - 16030:16030 # rs
-      - 16201:16201 # rs
-      - 16301:16301 # rs-ui
-    volumes:
-      - 'hbase_data:/hbase-data'
-    depends_on:
-      - zookeeper
-
-  aerospike:
-    image: 'aerospike'
-    container_name: aerospike
-    ports:
-      - 3000:3000
-      - 3001:3001
-      - 3002:3002
-    volumes:
-      - 'aerospike_data:/opt/aerospike/data'
       
 volumes:
   kafka_data:
   zookeeper_data:
-  hbase_data:
   aerospike_data:
